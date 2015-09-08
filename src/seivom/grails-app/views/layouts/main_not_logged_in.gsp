@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <g:link controller="home" action="login" id="login_link">Login</g:link>
+              <g:link controller="login" action="auth" id="login_link">Login</g:link>
             </li>
             <li>
               <g:link controller="home" action="signup" id="signup_link">Sign up</g:link>

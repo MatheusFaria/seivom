@@ -30,7 +30,7 @@ class BootStrap {
         String password = 'password'
 
         [jorge: "Jorge Reis", john: "John Doe", jane: "Jane Smith", jack: "Jack Shepard", kate: "Kate Austin", will: "Will I Am"].each { username, realname ->
-            def user = new Person(username: username, realname: realname, password: password, enable: true).save()
+            def user = new Person(username: username, realname: realname, password: password, email: username + "@email.com", enable: true).save()
 
             PersonAuthority.create user, userRole, true
         }

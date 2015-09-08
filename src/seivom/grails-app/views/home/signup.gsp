@@ -12,31 +12,37 @@
 	<body>
 <div class="section">
       <div class="container" id="signupform">
+<g:if test="${params.error_flag}">
+        <div class="alert alert-danger" style="max-width: 900px;">
+          <a class="close" data-dismiss="alert">×</a>
+          <strong>Error: </strong>Invalid information on sign up!
+        </div>
+</g:if>
         <div class="row">
           <div class="col-md-12">
-            <form role="form">
+            <g:form role="form" url="[action: 'createUser']" name="signupForm">
               <div class="form-group">
                 <label class="control-label" for="inputName">Name</label>
-                <input class="form-control" id="inputName"
-                placeholder="Enter name" type="text">
+                <g:field class="form-control" id="inputName" name="realname"
+                placeholder="Enter name" type="text" value="" />
               </div>
               <div class="form-group">
-                <label class="control-label" for="inputEmail1">Email address</label>
-                <input class="form-control" id="inputEmail1"
-                placeholder="Enter email" type="email">
+                <label class="control-label" for="inputEmail">Email address</label>
+                <g:field class="form-control" id="inputEmail" name="email"
+                placeholder="Enter email" type="email" value=""/>
               </div>
               <div class="form-group">
                 <label class="control-label" for="inputUsername">Username</label>
-                <input class="form-control" id="inputUsername"
-                placeholder="Enter Username" type="text">
+                <g:field class="form-control" id="inputUsername" name="username"
+                placeholder="Enter Username" type="text" value=""/>
               </div>
               <div class="form-group">
-                <label class="control-label" for="exampleInputPassword1">Password</label>
-                <input class="form-control" id="exampleInputPassword1"
-                placeholder="Password" type="password">
+                <label class="control-label" for="exampleInputPassword">Password</label>
+                <g:field class="form-control" id="exampleInputPassword" name="password"
+                placeholder="Password" type="password" value=""/>
               </div>
-              <button type="submit" class="btn btn-default">Sign up</button>
-            </form>
+              <g:submitButton type="submit" class="btn btn-default" name="Sign up" />
+            </g:form>
           </div>
         </div>
       </div>
