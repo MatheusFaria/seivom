@@ -22,6 +22,7 @@ class HomeController {
 
             if(person.validate()) {
                 person.save()
+                params.successful_sign_up = true
                 redirect controller: 'login', action: 'auth', params: params
             }
             else {

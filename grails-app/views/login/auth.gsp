@@ -17,6 +17,12 @@
           <strong>Error: </strong>Invalid username or password!
         </div>
 </g:if>
+<g:if test="${params.successful_sign_up}">
+        <div class="alert alert-success" style="max-width: 900px;">
+          <a class="close" data-dismiss="alert">×</a>
+          <strong>Welcome</strong> ${params.realname} Try to login now!
+        </div>
+</g:if>
     <form action='${postUrl}' method='POST' id='loginForm' class="form-signin" autocomplete='off'>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
