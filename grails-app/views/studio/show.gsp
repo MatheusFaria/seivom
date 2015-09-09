@@ -36,6 +36,8 @@
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
+                        <sec:ifLoggedIn>
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
                         <g:form>
                             <g:hiddenField name="id" value="${studioInstance?.id}" />
                             <g:hiddenField name="version" value="${studioInstance?.version}" />
@@ -45,6 +47,8 @@
 	                            <g:actionSubmit class="btn btn-danger btn-sm" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </fieldset>
 						</g:form>
+                        </sec:ifAllGranted>
+                        </sec:ifLoggedIn>
                         
                         <!-- END SIDEBAR BUTTONS -->
                         <!-- SIDEBAR MENU -->
@@ -64,9 +68,13 @@
 								<li>
 									<a href="${createLink(controller:'studio', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="studio.list.label" default="List Studios" /></a>
 								</li>
+                        <sec:ifLoggedIn>
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
 								<li>
 									<a href="${createLink(controller:'studio', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="studio.create.label" default="New Studio" /></a>
 								</li>
+                        </sec:ifAllGranted>
+                        </sec:ifLoggedIn>
 
 							</ul>
 						</div>

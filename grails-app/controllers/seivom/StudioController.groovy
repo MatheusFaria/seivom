@@ -1,8 +1,11 @@
 package seivom
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class StudioController {
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -15,6 +18,7 @@ class StudioController {
         [studioInstanceList: Studio.list(params), studioInstanceTotal: Studio.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [studioInstance: new Studio(params)]
     }
@@ -41,6 +45,7 @@ class StudioController {
         [studioInstance: studioInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def studioInstance = Studio.get(id)
         if (!studioInstance) {
