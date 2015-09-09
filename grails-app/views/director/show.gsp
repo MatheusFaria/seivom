@@ -36,6 +36,8 @@
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
+                        
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
                         <g:form>
                         	<g:hiddenField name="id" value="${directorInstance?.id}" />
                             <g:hiddenField name="version" value="${directorInstance?.version}" />
@@ -45,6 +47,7 @@
 	                            <g:actionSubmit class="btn btn-danger btn-sm" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </fieldset>
 						</g:form>
+                        </sec:ifAllGranted>
                         
                         <!-- END SIDEBAR BUTTONS -->
                         <!-- SIDEBAR MENU -->
@@ -63,9 +66,11 @@
 								<li>
 									<a href="${createLink(controller:'director', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="director.list.label" default="List Directors" /></a>
 								</li>
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
 								<li>
 									<a href="${createLink(controller:'director', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="director.create.label" default="New Director" /></a>
 								</li>
+                        </sec:ifAllGranted>
 
 							</ul>
 						</div>

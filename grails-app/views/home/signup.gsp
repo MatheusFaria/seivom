@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main_not_logged_in"/>
+		<meta name="layout" content="main"/>
                 <style type='text/css' media='screen'>
                         #signupform {
                                 max-width: 500px;

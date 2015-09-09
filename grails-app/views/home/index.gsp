@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <sec:ifLoggedIn>
       <meta name="layout" content="main"/>
     	<link rel="stylesheet" href="${resource(dir: 'css', file: 'profile.css')}" type="text/css">
-    </sec:ifLoggedIn>
-    
-    <sec:ifNotLoggedIn>
-      <meta name="layout" content="main_not_logged_in"/>
-    </sec:ifNotLoggedIn>
     <title>Seivom</title>
 	</head>
 	<body>
@@ -66,6 +60,38 @@ Licensed under MIT
                                                 </li>
                                         </ul>
                                 </div>
+
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name">
+                                                Manage
+                                        </div>
+                                </div>
+                                <div class="profile-usermenu">
+                                        <ul class="nav">
+                                         <li>
+                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                <g:message code="director.list.label" default="Manage Movies" /></a>
+                                        </li>
+                                         <li>
+                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                <g:message code="director.list.label" default="Manage Directors" /></a>
+                                        </li>
+                                         <li>
+                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                <g:message code="director.list.label" default="Manage Studios" /></a>
+                                        </li>
+                                         <li>
+                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                <g:message code="director.list.label" default="Manage Actors" /></a>
+                                        </li>
+                                        </ul>
+                                </div>
+                                </sec:ifAllGranted>
                                 <!-- END MENU -->
                         </div>
                 </div>

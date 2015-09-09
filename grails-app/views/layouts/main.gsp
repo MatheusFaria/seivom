@@ -30,9 +30,19 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
+    <sec:ifLoggedIn>
             <li class="active">
               <g:link controller="logout" action="index" id="logout_link">Logout</g:link>
             </li>
+    </sec:ifLoggedIn>
+    <sec:ifNotLoggedIn>
+            <li class="active">
+              <g:link controller="login" action="auth" id="login_link">Login</g:link>
+            </li>
+            <li>
+              <g:link controller="home" action="signup" id="signup_link">Sign up</g:link>
+            </li>
+    </sec:ifNotLoggedIn>
           </ul>
         </div>
       </div>

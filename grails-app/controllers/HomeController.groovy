@@ -11,7 +11,6 @@ class HomeController {
                         def watchedmovies = [m, m, m]
                         params.person = person
                         params.movies = watchedmovies
-                        //render template: 'movies', collection: watchedmovies, var: 'movie'
                 }
         }
 
