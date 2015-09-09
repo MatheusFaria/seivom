@@ -5,8 +5,8 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'director.label', default: 'Director')}" />
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'card.css')}" type="text/css">
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'card.css')}" type="text/css">
 	</head>
 	<body>
 

@@ -29,6 +29,13 @@ body {
   border-radius: 50% !important;
 }
 
+.movie-poster img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+}
+
 .profile-usertitle {
   text-align: center;
   margin-top: 20px;

@@ -11,9 +11,20 @@
     -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
        -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
             box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    overflow: auto;
 }
 
 .card:hover{
   cursor: pointer;
   border-color: #45ABCD;
+}
+
+.movie-poster img {
+  float: left;
+  width: 10%;
+}
+
+.movie-title {
+  margin-left: 10%;
+  padding-top: 5%;
 }
