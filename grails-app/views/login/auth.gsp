@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name='layout' content='main_not_logged_in'/>
+	<meta name='layout' content='main'/>
 	<title><g:message code="springSecurity.login.title"/></title>
 	<style type='text/css' media='screen'>
                 #login {

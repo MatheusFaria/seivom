@@ -14,7 +14,9 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row"> 
 					<div role="navigation">
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
 						<g:link class="btn btn-success pull-right" action="create"><i class="glyphicon glyphicon-plus"></i><g:message code="default.new.label" args="[entityName]" /></g:link>
+                                </sec:ifAllGranted>
 					</div>
 				</div>
 

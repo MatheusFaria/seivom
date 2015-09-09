@@ -1,8 +1,11 @@
 package seivom
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class DirectorController {
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -15,6 +18,7 @@ class DirectorController {
         [directorInstanceList: Director.list(params), directorInstanceTotal: Director.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [directorInstance: new Director(params)]
     }
@@ -41,6 +45,7 @@ class DirectorController {
         [directorInstance: directorInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def directorInstance = Director.get(id)
         if (!directorInstance) {
