@@ -86,6 +86,7 @@ class StudioController {
         redirect(action: "show", id: studioInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def studioInstance = Studio.get(id)
         if (!studioInstance) {

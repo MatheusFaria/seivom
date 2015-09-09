@@ -1,6 +1,7 @@
 package seivom
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class MovieController {
 
@@ -15,6 +16,7 @@ class MovieController {
         [movieInstanceList: Movie.list(params), movieInstanceTotal: Movie.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [movieInstance: new Movie(params)]
     }
@@ -41,6 +43,7 @@ class MovieController {
         [movieInstance: movieInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def movieInstance = Movie.get(id)
         if (!movieInstance) {
@@ -81,6 +84,7 @@ class MovieController {
         redirect(action: "show", id: movieInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def movieInstance = Movie.get(id)
         if (!movieInstance) {

@@ -11,11 +11,13 @@
 	<body>
 		<div class="container">
 			<div class="col-md-10 col-md-offset-1">
+				<sec:ifAllGranted roles="ROLE_ADMIN">
 				<div class="row"> 
 					<div class="nav" role="navigation">
 						<g:link class="btn btn-success pull-right" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 					</div>
 				</div>
+				</sec:ifAllGranted>
 
 				<div class="row">
 					<div id="list-movie" class="content scaffold-list" role="main">

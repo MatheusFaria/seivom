@@ -86,6 +86,7 @@ class DirectorController {
         redirect(action: "show", id: directorInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def directorInstance = Director.get(id)
         if (!directorInstance) {

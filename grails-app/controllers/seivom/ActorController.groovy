@@ -86,6 +86,7 @@ class ActorController {
         redirect(action: "show", id: actorInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def actorInstance = Actor.get(id)
         if (!actorInstance) {
