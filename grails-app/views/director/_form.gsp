@@ -1,11 +1,10 @@
 <%@ page import="seivom.Director" %>
 
-
+<br style="clear:both">
 
 <div class="fieldcontain ${hasErrors(bean: directorInstance, field: 'movie', 'error')} ">
-	<label for="movie">
+	<label class="control-label" for="movie">
 		<g:message code="director.movie.label" default="Movie" />
-		
 	</label>
 	
 <ul class="one-to-many">
@@ -20,10 +19,10 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: directorInstance, field: 'name', 'error')} ">
-	<label for="name">
+	<label class="control-label" for="name">
 		<g:message code="director.name.label" default="Name" />
-		
 	</label>
-	<g:textField name="name" value="${directorInstance?.name}"/>
+	<g:textField class="form-control"  name="name" value="${directorInstance?.name}"/>
 </div>
+
 

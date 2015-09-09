@@ -56,16 +56,16 @@
 
 
                         <div class="profile-usermenu">
-						<ul class="nav" role="navigation">
-							<li>
-								<a href="${createLink(controller:'director', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="director.list.label" default="List Directors" /></a>
-							</li>
-							<li>
-								<a href="${createLink(controller:'director', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="director.create.label" default="New Director" /></a>
-							</li>
+							<ul class="nav" role="navigation">
+								<li>
+									<a href="${createLink(controller:'director', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="director.list.label" default="List Directors" /></a>
+								</li>
+								<li>
+									<a href="${createLink(controller:'director', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="director.create.label" default="New Director" /></a>
+								</li>
 
-						</ul>
-					</div>
+							</ul>
+						</div>
 
                         <!-- END MENU -->
                     </div>
