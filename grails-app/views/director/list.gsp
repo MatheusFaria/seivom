@@ -36,7 +36,7 @@
 							<g:each in="${directorInstanceList}" status="i" var="directorInstance">
 									<tr onclick='document.location = "<g:createLink action='show' id='${directorInstance.id}'/>"'><td>
 										<div class="card">
-											<g:link action="show" id="${directorInstance.id}">${fieldValue(bean: directorInstance, field: "name")}</g:link>
+											${directorInstance.name}
 										</div>
 									</td></tr>
 							</g:each>

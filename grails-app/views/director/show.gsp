@@ -4,9 +4,9 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'profile.css')}" type="text/css">
 		<g:set var="entityName" value="${message(code: 'director.label', default: 'Director')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'profile.css')}" type="text/css">
 	</head>
 
 	<!--
@@ -37,6 +37,9 @@
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
                         <g:form>
+                        	<g:hiddenField name="id" value="${directorInstance?.id}" />
+                            <g:hiddenField name="version" value="${directorInstance?.version}" />
+
 							<fieldset class="profile-userbuttons">
 	                            <g:link class="btn btn-success btn-sm" action="edit" id="${directorInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 	                            <g:actionSubmit class="btn btn-danger btn-sm" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

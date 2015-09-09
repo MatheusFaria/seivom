@@ -1,9 +1,9 @@
 <%@ page import="seivom.Studio" %>
 
-
+<br style="clear:both">
 
 <div class="fieldcontain ${hasErrors(bean: studioInstance, field: 'movie', 'error')} ">
-	<label for="movie">
+	<label class="control-label" for="movie">
 		<g:message code="studio.movie.label" default="Movie" />
 		
 	</label>
@@ -20,18 +20,18 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studioInstance, field: 'country', 'error')} ">
-	<label for="country">
+	<label class="control-label" for="country">
 		<g:message code="studio.country.label" default="Country" />
 		
 	</label>
-	<g:textField name="country" value="${studioInstance?.country}"/>
+	<g:textField class="form-control" name="country" value="${studioInstance?.country}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studioInstance, field: 'name', 'error')} ">
-	<label for="name">
+	<label class="control-label" for="name">
 		<g:message code="studio.name.label" default="Name" />
 		
 	</label>
-	<g:textField name="name" value="${studioInstance?.name}"/>
+	<g:textField class="form-control" name="name" value="${studioInstance?.name}"/>
 </div>
 
