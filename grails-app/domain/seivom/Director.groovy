@@ -9,4 +9,8 @@ class Director {
     static constraints = {
     	movie nullable: true
     }
+
+    String toString() {
+        return name
+    }
 }

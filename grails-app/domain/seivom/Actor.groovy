@@ -8,4 +8,8 @@ class Actor {
     static constraints = {
     	movies nullable: true
     }
+
+    String toString() {
+        return name
+    }
 }

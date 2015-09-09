@@ -15,4 +15,8 @@ class Movie {
     static constraints = {
     	reviews nullable: true
     }
+
+    String toString() {
+        return title
+    }
 }

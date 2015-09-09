@@ -10,4 +10,8 @@ class Studio {
     static constraints = {
     	movie nullable: true
     }
+
+    String toString() {
+        return name
+    }
 }
