@@ -82,12 +82,12 @@ Licensed under MIT
                                          <li>
                                                 <a href="${createLink(controller:'studio', action:'list')}"/>
                                                         <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="director.list.label" default="Manage Studios" /></a>
+                                                <g:message code="studio.list.label" default="Manage Studios" /></a>
                                         </li>
                                          <li>
-                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                <a href="${createLink(controller:'actor', action:'list')}"/>
                                                         <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="director.list.label" default="Manage Actors" /></a>
+                                                <g:message code="actor.list.label" default="Manage Actors" /></a>
                                         </li>
                                         </ul>
                                 </div>

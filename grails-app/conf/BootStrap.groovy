@@ -43,6 +43,9 @@ class BootStrap {
     }
 
     private void createActors() {
+        ["Jack Nicholson", "Ralph Fiennes", "Daniel Day-Lewis", "Robert De Niro", "Al Pacino"].each { realname ->
+            def actor = new Actor(name: realname).save()
+        }
     }
 
     private void createStudios() {
