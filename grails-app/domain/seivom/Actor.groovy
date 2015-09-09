@@ -2,8 +2,8 @@ package seivom
 
 class Actor {
 
-	static belongsTo = Movie
-	static hasMany = [movies: Movie]
+    static hasMany = [movies: Movie]
+    String name
 
     static constraints = {
     	movies nullable: true

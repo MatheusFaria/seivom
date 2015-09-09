@@ -1,11 +1,10 @@
 
-
-<%@ page import="seivom.Studio" %>
+<%@ page import="seivom.Actor" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'studio.label', default: 'Studio')}" />
+		<g:set var="entityName" value="${message(code: 'actor.label', default: 'Actor')}" />
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'card.css')}" type="text/css">
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -22,7 +21,7 @@
 				</div>
 
 				<div class="row">
-					<div id="list-studio" class="scaffold-list" role="main">
+					<div id="list-actor" class="scaffold-list" role="main">
 						<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 						<g:if test="${flash.message}">
 						<div class="message" role="status">${flash.message}</div>
@@ -31,15 +30,15 @@
 							<thead>
 								<tr>
 								
-									<g:sortableColumn property="name" title="${message(code: 'studio.name.label', default: 'Name')}" />
+									<g:sortableColumn property="name" title="${message(code: 'actor.name.label', default: 'Name')}" />
 								
 								</tr>
 							</thead>
 							<tbody>
-							<g:each in="${studioInstanceList}" status="i" var="studioInstance">
-									<tr onclick='document.location = "<g:createLink action='show' id='${studioInstance.id}'/>"'><td>
+							<g:each in="${actorInstanceList}" status="i" var="actorInstance">
+									<tr onclick='document.location = "<g:createLink action='show' id='${actorInstance.id}'/>"'><td>
 										<div class="card">
-											${studioInstance.name}
+											${actorInstance.name}
 										</div>
 									</td></tr>
 							</g:each>
