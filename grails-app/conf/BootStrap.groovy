@@ -21,7 +21,7 @@ class BootStrap {
         def userRole = new Authority(authority: 'ROLE_ADMIN').save()
         String password = 'password'
 
-        def user = new Person(username: 'admin', realname: "Admin", password: password, enable: true).save()
+        def user = new Person(username: 'admin', realname: "Admin", password: password, email: "admin@email.com", enable: true).save()
         PersonAuthority.create user, userRole, true
     }
 
