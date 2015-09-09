@@ -80,7 +80,7 @@ Licensed under MIT
                                                 <g:message code="director.list.label" default="Manage Directors" /></a>
                                         </li>
                                          <li>
-                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                <a href="${createLink(controller:'studio', action:'list')}"/>
                                                         <i class="glyphicon glyphicon-cog"></i>
                                                 <g:message code="director.list.label" default="Manage Studios" /></a>
                                         </li>

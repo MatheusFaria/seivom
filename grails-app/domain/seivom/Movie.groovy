@@ -2,6 +2,7 @@ package seivom
 
 class Movie {
 
+    static belongsTo = Actor
     static hasMany = [actors: Actor, reviews: Review]
     Director director
     Studio studio
@@ -13,6 +14,5 @@ class Movie {
 
     static constraints = {
     	reviews nullable: true
-    	actors nullable: true
     }
 }
