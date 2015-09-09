@@ -4,23 +4,90 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'profile.css')}" type="text/css">
 		<g:set var="entityName" value="${message(code: 'director.label', default: 'Director')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
-	<body>
-		<a href="#show-director" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
+	<!--
+	User Profile Sidebar by @keenthemes
+	A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+	Licensed under MIT
+	-->
+
+	<body>		
+		<div class="container">
+    		<div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic">
+                            <img src="${resource(dir: 'images', file: 'user-img.png')}" class="img-responsive" alt="">
+                        </div>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <g:fieldValue bean="${directorInstance}" field="name"/>
+                            </div>
+                            <div class="profile-usertitle-job">
+                                <g:message code="default.director.label" default="Director"/>
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <g:form>
+							<fieldset class="profile-userbuttons">
+	                            <g:link class="btn btn-success btn-sm" action="edit" id="${directorInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+	                            <g:actionSubmit class="btn btn-danger btn-sm" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                            </fieldset>
+						</g:form>
+                        
+                        <!-- END SIDEBAR BUTTONS -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <ul class="nav">
+                                <li class="active">
+	                                <a href="#"><i class="glyphicon glyphicon-film"></i>
+	                                	Directed Movies</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="profile-usermenu">
+						<ul class="nav" role="navigation">
+							<li>
+								<a href="${createLink(controller:'director', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="director.list.label" default="List Directors" /></a>
+							</li>
+							<li>
+								<a href="${createLink(controller:'director', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="director.create.label" default="New Director" /></a>
+							</li>
+
+						</ul>
+					</div>
+
+                        <!-- END MENU -->
+                    </div>
+                </div>
+
+            <div class="col-md-9">
+				<div class="profile-content">
+                	<g:if test="${flash.message}">
+						<div class="message" role="status">${flash.message}</div>
+					</g:if>
+
+					Movies
+            	</div>
+            </div>
+        </div>
+
+
+
+		
+
+
 		<div id="show-director" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ol class="property-list director">
 			
 				<g:if test="${directorInstance?.movie}">
@@ -33,24 +100,8 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${directorInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="director.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${directorInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
+						
 			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${directorInstance?.id}" />
-					<g:link class="edit" action="edit" id="${directorInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
 		</div>
 	</body>
 </html>
