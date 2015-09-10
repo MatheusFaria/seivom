@@ -27,12 +27,11 @@ class MovieController {
     def save() {
         def movieInstance = new Movie(params)
 
-        
         def poster = params.poster
 
         if (!okcontents.contains(poster.getContentType())) {
             flash.message = message(code: 'default.poster.invalid')
-            redirect(action: "list")
+            redirect(action: "create")
             return
         }
 

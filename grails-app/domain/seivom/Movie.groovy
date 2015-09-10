@@ -17,7 +17,7 @@ class Movie {
     	reviews nullable: true
         genres nullable: true
         title blank: false
-        poster(maxSize: 524288 /* 512K */)
+        poster maxSize: 524288 /* 512K */
     }
 
     static mapping = {

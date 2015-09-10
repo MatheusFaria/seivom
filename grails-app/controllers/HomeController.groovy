@@ -7,10 +7,8 @@ class HomeController {
         def index = {
                 if (springSecurityService.isLoggedIn()) {
                         def person = springSecurityService.currentUser
-                        def m = new Movie(name: "Mad Max")
-                        def watchedmovies = [m, m, m]
                         params.person = person
-                        params.movies = watchedmovies
+                        params.movies = person.watchedmovies
                 }
         }
 

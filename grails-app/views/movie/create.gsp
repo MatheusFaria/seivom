@@ -10,13 +10,16 @@
 	<body>
 
 		<div class="container">
+                        <g:if test="${flash.message}">
+                        <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                          <a class="close" data-dismiss="alert">×</a>
+                          ${flash.message}
+                        </div>
+						</g:if>
 			<div class="col-md-6 col-md-offset-3">
 				<div class="form-area">
 
 					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-					<g:if test="${flash.message}">
-					<div class="message" role="status">${flash.message}</div>
-					</g:if>
 					<g:hasErrors bean="${movieInstance}">
 					<ul class="errors" role="alert">
 						<g:eachError bean="${movieInstance}" var="error">

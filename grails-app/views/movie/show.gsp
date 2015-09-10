@@ -26,17 +26,10 @@
                         </div>
                         <!-- END SIDEBAR USERPIC -->
 
-                        <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">
-                                <g:fieldValue bean="${movieInstance}" field="title"/>
-                            </div>
-                            <div class="profile-usertitle-job">
-                                ${movieInstance.year.getAt(Calendar.YEAR)}, ${movieInstance.duration} <g:message code="default.time.minutes" default="minutes" />
-                            </div>
-                        </div>
 
 
                         <!-- SIDEBAR BUTTONS -->
+                        <sec:ifLoggedIn>
                         <g:form>
                           <g:hiddenField name="id" value="${movieInstance?.id}" />
                           <g:hiddenField name="version" value="${movieInstance?.version}" />
@@ -51,6 +44,7 @@
                             </g:link>
                           </fieldset>
                         </g:form>
+                        </sec:ifLoggedIn>
 
                         <sec:ifAllGranted roles="ROLE_ADMIN">
                         <g:form>
@@ -95,13 +89,25 @@
                 </div>
 
             <div class="col-md-9">
-				<div class="profile-content">
-                	<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
-					</g:if>
-
-					Reviews
-            	</div>
+                <div class="profile-content">
+                <h1>${movieInstance?.title}</h1>
+                <p>${movieInstance?.director.name}, ${movieInstance?.year.getAt(Calendar.YEAR)} (${movieInstance?.studio.name})</p>
+                <p> <g:message code="default.duration_label"/>: ${movieInstance?.duration} <g:message code="default.time.minutes" default="minutes" /></p>
+                <div class="well">
+                  <strong> Synopsis </strong>
+                  <p>${movieInstance?.description}</p>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading"><strong>Actors</strong></div>
+                  <div class="panel-body">
+                    <g:each in="${movieInstance?.actors}">
+                      <p>${it.name}</p>
+                    </g:each>
+                  </div>
+                </div>
+                <h1><g:message code="default.review.label"/></h1>
+                <g:render template="review" collection="${movieInstance?.reviews}" var="review" />
+            </div>
             </div>
         </div>
 	</body>
