@@ -3,17 +3,19 @@ package seivom
 class Movie {
 
     static belongsTo = Actor
-    static hasMany = [actors: Actor, reviews: Review]
+    static hasMany = [actors: Actor, reviews: Review, genres: Genre]
     Director director
     Studio studio
     String title
     String decription
-    String genre
     Date year
     int duration
 
     static constraints = {
     	reviews nullable: true
+    	genres nullable: true
+
+        title blank: false
     }
 
     String toString() {
