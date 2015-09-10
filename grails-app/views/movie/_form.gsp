@@ -2,21 +2,20 @@
 
 <br style="clear:both">
 
-<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'reviews', 'error')} ">
-	<label class="control-label" for="reviews">
-		<g:message code="movie.reviews.label" default="Reviews" />
+<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'title', 'error')} ">
+	<label class="control-label" for="title">
+		<g:message code="movie.title.label" default="Title" />
 		
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${movieInstance?.reviews?}" var="r">
-    <li><g:link controller="review" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="review" action="create" params="['movie.id': movieInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'review.label', default: 'Review')])}</g:link>
-</li>
-</ul>
+	<g:textField class="form-control" name="title" value="${movieInstance?.title}"/>
+</div>
 
+<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'genres', 'error')} ">
+	<label class="control-label" for="genres">
+		<g:message code="movie.genres.label" default="Genres" />
+		
+	</label>
+	<g:select class="form-control" name="genres" from="${seivom.Genre.list()}" multiple="multiple" optionKey="id" size="1" value="${movieInstance?.genres*.id}" class="one-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'actors', 'error')} ">
@@ -51,13 +50,6 @@
 	<g:field name="duration" class="form-control" type="number" value="${movieInstance.duration}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'genre', 'error')} ">
-	<label class="control-label" for="genre">
-		<g:message code="movie.genre.label" default="Genre" />
-		
-	</label>
-	<g:textField name="genre" class="form-control" value="${movieInstance?.genre}"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'studio', 'error')} required">
 	<label class="control-label" for="studio">
@@ -67,13 +59,6 @@
 	<g:select class="form-control" id="studio" name="studio.id" from="${seivom.Studio.list()}" optionKey="id" required="" value="${movieInstance?.studio?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'title', 'error')} ">
-	<label class="control-label" for="title">
-		<g:message code="movie.title.label" default="Title" />
-		
-	</label>
-	<g:textField class="form-control" name="title" value="${movieInstance?.title}"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'year', 'error')} required">
 	<label class="control-label" for="year">

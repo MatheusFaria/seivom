@@ -25,18 +25,23 @@
                             <img src="${createLink(controller:'movie', action:'get_poster', id:movieInstance.ident())}" class="img-responsive" alt="">
                         </div>
                         <!-- END SIDEBAR USERPIC -->
-                        <!-- SIDEBAR USER TITLE -->
-                        <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">
-                                <g:fieldValue bean="${movieInstance}" field="title"/>
-                            </div>
-                            <div class="profile-usertitle-job">
-                                <g:message code="default.movie.label" default="Movie"/>
-                            </div>
-                        </div>
-                        <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
-                        
+
+                        <g:form>
+                          <g:hiddenField name="id" value="${movieInstance?.id}" />
+                          <g:hiddenField name="version" value="${movieInstance?.version}" />
+                          <fieldset class="profile-userbuttons">
+                            <g:link class="btn btn-success btn-sm" action="edit" id="${movieInstance?.id}">
+                              <i class="glyphicon glyphicon-eye-open"></i>
+                              <g:message code="Watched" default="Watched" />
+                            </g:link>
+                            <g:link class="btn btn-warning btn-sm" action="edit" id="${movieInstance?.id}">
+                              <i class="glyphicon glyphicon-dashboard"></i>
+                              <g:message code="Watch Later" default="Watch Later" />
+                            </g:link>
+                          </fieldset>
+                        </g:form>
+
                         <sec:ifAllGranted roles="ROLE_ADMIN">
                         <g:form>
                         	<g:hiddenField name="id" value="${movieInstance?.id}" />

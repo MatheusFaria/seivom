@@ -7,6 +7,7 @@ class BootStrap {
         if(!Person.count()){
             createAdmin()
             createUsers()
+            createGenres()
             createDirectors()
             createActors()
             createStudios()
@@ -55,5 +56,12 @@ class BootStrap {
     }
 
     private void createMovies() {
+    }
+
+    private void createGenres() {
+        ["Action", "Animation", "Comedy", "Documentary", "Family", "Film-Noir", "Horror", "Musical", "Romance", "Sport", "War",
+          "Adventure", "Biography", "Crime", "Drama", "Fantasy", "History", "Mystery", "Music", "Sci-Fi", "Thriller", "Western" ].each { name ->
+            def genre = new Genre(name: name).save()
+        }
     }
 }
