@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest
 import grails.plugins.springsecurity.Secured
 
 class MovieController {
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     private static final okcontents = ['image/png', 'image/jpeg']
@@ -52,6 +53,11 @@ class MovieController {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'movie.label', default: 'Movie'), id])
             redirect(action: "list")
             return
+        }
+
+        if (springSecurityService.isLoggedIn()) {
+                def person = springSecurityService.currentUser
+                params.person = person
         }
 
         [movieInstance: movieInstance]
@@ -131,5 +137,33 @@ class MovieController {
         OutputStream out = response.outputStream
         out.write(movie.poster)
         out.close()
+    }
+
+    def watched_movie() {
+        if (springSecurityService.isLoggedIn()) {
+                def person = springSecurityService.currentUser
+                def movie = Movie.get(params.id)
+                person.watchedmovies.add(movie)
+        }
+        redirect(action: "show", id: params.id)
+    }
+
+    def remove_watched_movie() {
+        if (springSecurityService.isLoggedIn()) {
+                def person = springSecurityService.currentUser
+                def movie = Movie.get(params.id)
+                if(person.watchedmovies.contains(movie))
+                        person.watchedmovies.remove(movie)
+        }
+        redirect(action: "show", id: params.id)
+    }
+
+    def watch_later_movie() {
+        if (springSecurityService.isLoggedIn()) {
+                def person = springSecurityService.currentUser
+                def movie = Movie.get(params.id)
+                person.watchlater.add(movie)
+        }
+        redirect(action: "show", id: params.id)
     }
 }

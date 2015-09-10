@@ -5,10 +5,9 @@
             <img src="${createLink(controller:'movie', action:'get_poster', id:movie.ident())}"  class="img-responsive">
           </div>
           <div class="col-md-9">
-                <a href="${createLink(controller:'movie', action:'list')}"/>
-                        <h2>${movie.title}</h2>
+                <a href="${createLink(controller:'movie', action:'show', id:movie.id)}"/>
+                        <strong>${movie.title}</strong>
                 </a>
-                <small>${movie.year.getAt(Calendar.YEAR)}, ${movie.duration} <g:message code="default.time.minutes" default="minutes" /></small>
                 <p>${movie.description}</p>
                         <ul class="list-inline list-unstyled">
                                 <li>

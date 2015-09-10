@@ -34,11 +34,19 @@
                           <g:hiddenField name="id" value="${movieInstance?.id}" />
                           <g:hiddenField name="version" value="${movieInstance?.version}" />
                           <fieldset class="profile-userbuttons">
-                            <g:link class="btn btn-success btn-sm" action="edit" id="${movieInstance?.id}">
-                              <i class="glyphicon glyphicon-eye-open"></i>
-                              <g:message code="Watched" default="Watched" />
-                            </g:link>
-                            <g:link class="btn btn-warning btn-sm" action="edit" id="${movieInstance?.id}">
+                               <g:if test="${params.person.watchedmovies.contains(movieInstance)}">
+                                    <g:link class="btn btn-danger btn-sm" action="remove_watched_movie" id="${movieInstance?.id}">
+                                      <i class="glyphicon glyphicon-eye-close"></i>
+                                      <g:message code="Didn't Watch" default="Didn't Watch" />
+                                    </g:link>
+                               </g:if>
+                               <g:else>
+                                    <g:link class="btn btn-success btn-sm" action="watched_movie" id="${movieInstance?.id}">
+                                      <i class="glyphicon glyphicon-eye-open"></i>
+                                      <g:message code="Watched" default="Watched" />
+                                    </g:link>
+                               </g:else>
+                            <g:link class="btn btn-warning btn-sm" action="watch_later_movie" id="${movieInstance?.id}">
                               <i class="glyphicon glyphicon-dashboard"></i>
                               <g:message code="Watch Later" default="Watch Later" />
                             </g:link>
