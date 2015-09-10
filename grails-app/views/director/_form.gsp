@@ -2,17 +2,17 @@
 
 <br style="clear:both">
 
-<div class="fieldcontain ${hasErrors(bean: directorInstance, field: 'movie', 'error')} ">
-	<label class="control-label" for="movie">
-		<g:message code="director.movie.label" default="Movie" />
+<div class="fieldcontain ${hasErrors(bean: directorInstance, field: 'movies', 'error')} ">
+	<label class="control-label" for="movies">
+		<g:message code="director.movies.label" default="Movies" />
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${directorInstance?.movie?}" var="m">
+<g:each in="${directorInstance?.movies?}" var="m">
     <li><g:link controller="movie" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="movie" action="create" params="['director.id': directorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'movie.label', default: 'Movie')])}</g:link>
+<g:link controller="movie" action="create" params="['director.id': directorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'movies.label', default: 'Movies')])}</g:link>
 </li>
 </ul>
 

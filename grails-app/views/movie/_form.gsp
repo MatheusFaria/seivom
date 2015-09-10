@@ -26,12 +26,12 @@
 	<g:select class="form-control" name="actors" from="${seivom.Actor.list()}" multiple="multiple" optionKey="id" size="1" value="${movieInstance?.actors*.id}" class="many-to-many"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'decription', 'error')} ">
-	<label class="control-label" for="decription">
-		<g:message code="movie.decription.label" default="Decription" />
+<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'description', 'error')} ">
+	<label class="control-label" for="description">
+		<g:message code="movie.description.label" default="Description" />
 		
 	</label>
-	<g:textField class="form-control" name="decription" value="${movieInstance?.decription}"/>
+	<g:textField class="form-control" name="description" value="${movieInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'director', 'error')} required">

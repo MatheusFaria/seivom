@@ -2,13 +2,13 @@ package seivom
 
 class Studio {
 
-	static hasMany = [movie: Movie]
+	static hasMany = [movies: Movie]
 
 	String name
 	String country
 
     static constraints = {
-    	movie nullable: true
+    	movies nullable: true
     }
 
     String toString() {

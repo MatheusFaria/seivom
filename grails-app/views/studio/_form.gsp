@@ -2,18 +2,18 @@
 
 <br style="clear:both">
 
-<div class="fieldcontain ${hasErrors(bean: studioInstance, field: 'movie', 'error')} ">
-	<label class="control-label" for="movie">
-		<g:message code="studio.movie.label" default="Movie" />
+<div class="fieldcontain ${hasErrors(bean: studioInstance, field: 'movies', 'error')} ">
+	<label class="control-label" for="movies">
+		<g:message code="studio.movies.label" default="Movies" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${studioInstance?.movie?}" var="m">
+<g:each in="${studioInstance?.movies?}" var="m">
     <li><g:link controller="movie" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="movie" action="create" params="['studio.id': studioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'movie.label', default: 'Movie')])}</g:link>
+<g:link controller="movie" action="create" params="['studio.id': studioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'movies.label', default: 'Movies')])}</g:link>
 </li>
 </ul>
 

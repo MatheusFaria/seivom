@@ -89,31 +89,9 @@
 						<div class="message" role="status">${flash.message}</div>
 					</g:if>
 
-					Movies
+					<g:render template="movies" collection="${directorInstance.movies}" var="movie" />
             	</div>
             </div>
         </div>
-
-
-
-		
-
-
-		<div id="show-director" class="content scaffold-show" role="main">
-			<ol class="property-list director">
-			
-				<g:if test="${directorInstance?.movie}">
-				<li class="fieldcontain">
-					<span id="movie-label" class="property-label"><g:message code="director.movie.label" default="Movie" /></span>
-					
-						<g:each in="${directorInstance.movie}" var="m">
-						<span class="property-value" aria-labelledby="movie-label"><g:link controller="movie" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-						
-			</ol>
-		</div>
 	</body>
 </html>

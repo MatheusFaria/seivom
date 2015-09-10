@@ -2,12 +2,12 @@ package seivom
 
 class Director {
 
-	static hasMany = [movie: Movie]
+	static hasMany = [movies: Movie]
 
 	String name
 
     static constraints = {
-    	movie nullable: true
+    	movies nullable: true
     }
 
     String toString() {

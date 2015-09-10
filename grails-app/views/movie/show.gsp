@@ -25,8 +25,18 @@
                             <img src="${createLink(controller:'movie', action:'get_poster', id:movieInstance.ident())}" class="img-responsive" alt="">
                         </div>
                         <!-- END SIDEBAR USERPIC -->
-                        <!-- SIDEBAR BUTTONS -->
 
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <g:fieldValue bean="${movieInstance}" field="title"/>
+                            </div>
+                            <div class="profile-usertitle-job">
+                                ${movieInstance.year.getAt(Calendar.YEAR)}, ${movieInstance.duration} <g:message code="default.time.minutes" default="minutes" />
+                            </div>
+                        </div>
+
+
+                        <!-- SIDEBAR BUTTONS -->
                         <g:form>
                           <g:hiddenField name="id" value="${movieInstance?.id}" />
                           <g:hiddenField name="version" value="${movieInstance?.version}" />

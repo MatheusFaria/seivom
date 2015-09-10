@@ -89,7 +89,7 @@
 						<div class="message" role="status">${flash.message}</div>
 					</g:if>
 
-					Movies
+					<g:render template="movies" collection="${studioInstance.movies}" var="movie" />
             	</div>
             </div>
         </div>

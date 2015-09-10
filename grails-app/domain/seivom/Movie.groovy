@@ -7,7 +7,7 @@ class Movie {
     Director director
     Studio studio
     String title
-    String decription
+    String description
     Date year
     int duration
     byte[] poster
