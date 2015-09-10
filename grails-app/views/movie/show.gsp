@@ -22,7 +22,7 @@
                     <div class="profile-sidebar">
                         <!-- SIDEBAR USERPIC -->
                         <div class="movie-poster">
-                            <img src="${resource(dir: 'images', file: 'poster-placeholder.jpg')}" class="img-responsive" alt="">
+                            <img src="${createLink(controller:'movie', action:'get_poster', id:movieInstance.ident())}" class="img-responsive" alt="">
                         </div>
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->

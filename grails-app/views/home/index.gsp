@@ -70,7 +70,7 @@ Licensed under MIT
                                 <div class="profile-usermenu">
                                         <ul class="nav">
                                          <li>
-                                                <a href="${createLink(controller:'director', action:'list')}"/>
+                                                <a href="${createLink(controller:'movie', action:'list')}"/>
                                                         <i class="glyphicon glyphicon-cog"></i>
                                                 <g:message code="director.list.label" default="Manage Movies" /></a>
                                         </li>

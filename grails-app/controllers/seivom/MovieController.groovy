@@ -1,11 +1,14 @@
 package seivom
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.web.multipart.MultipartFile
+import org.springframework.web.multipart.MultipartHttpServletRequest
 import grails.plugins.springsecurity.Secured
 
 class MovieController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    private static final okcontents = ['image/png', 'image/jpeg']
 
     def index() {
         redirect(action: "list", params: params)
@@ -23,6 +26,18 @@ class MovieController {
 
     def save() {
         def movieInstance = new Movie(params)
+
+        
+        def poster = params.poster
+
+        if (!okcontents.contains(poster.getContentType())) {
+            flash.message = message(code: 'default.poster.invalid')
+            redirect(action: "list")
+            return
+        }
+
+        movieInstance.poster = poster.bytes
+        movieInstance.posterType = poster.contentType
         if (!movieInstance.save(flush: true)) {
             render(view: "create", model: [movieInstance: movieInstance])
             return
@@ -102,5 +117,20 @@ class MovieController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'movie.label', default: 'Movie'), id])
             redirect(action: "show", id: id)
         }
+    }
+
+
+    def get_poster() {
+        def movie = Movie.get(params.id)
+        if(!movie || !movie.poster || !movie.posterType) {
+            response.sendError(404)
+            return
+        }
+
+        response.contentType = movie.posterType
+        response.contentLength = movie.poster.size()
+        OutputStream out = response.outputStream
+        out.write(movie.poster)
+        out.close()
     }
 }

@@ -80,6 +80,12 @@
 		<g:message code="movie.year.label" default="Year" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="year" precision="year"  value="${movieInstance?.year}"  />
+	<g:datePicker class="form-control" name="year" precision="year"  value="${movieInstance?.year}"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'year', 'error')} required">
+<label class="control-label" for="poster"><g:message code="movie.poster.label" default="Poster" />
+		<span class="required-indicator">*</span></label>
+<input class="form-control" type="file" name="poster" id="poster" />
 </div>
 

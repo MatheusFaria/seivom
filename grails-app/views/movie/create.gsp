@@ -24,7 +24,7 @@
 						</g:eachError>
 					</ul>
 					</g:hasErrors>
-					<g:form action="save" >
+					<g:uploadForm action="save" >
 						<fieldset class="form">
 							<g:render template="form"/>
 						</fieldset>
@@ -35,7 +35,7 @@
 							<g:submitButton name="create" class="btn btn-success pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 							<g:actionSubmit class="btn btn-warning" action="list" value="${message(code: 'default.button.back.label', default: 'Go Back')}"/>
 						</fieldset>
-					</g:form>
+					</g:uploadForm>
 				</div>
 			</div>
 		</div>

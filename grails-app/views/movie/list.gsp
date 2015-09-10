@@ -37,7 +37,7 @@
 									<td>
 										<div class="card">
 											<div class="movie-poster">
-												<img src="${resource(dir: 'images', file: 'poster-placeholder.jpg')}" class="img-responsive" alt="">
+												<img src="${createLink(controller:'movie', action:'get_poster', id:movieInstance.ident())}" class="img-responsive" alt="">
 											</div>
 											<div class="container-fluid">
 												<div class="movie-title">
