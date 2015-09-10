@@ -13,7 +13,7 @@ class Person {
 	boolean accountLocked
 	boolean passwordExpired
 
-        static hasMany = [reviewedmovies: Movie, watchlater: Movie, watchedmovies: Movie]
+        static hasMany = [reviews: Review, watchlater: Movie, watchedmovies: Movie]
 
         static transients = ['springSecurityService']
 	static constraints = {
@@ -21,7 +21,7 @@ class Person {
 		password blank: false
                 realname blank: false
                 email blank: false
-                reviewedmovies nullable: true
+                reviews nullable: true
                 watchedmovies nullable: true
                 watchlater nullable: true
 	}
