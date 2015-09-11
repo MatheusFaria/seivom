@@ -115,6 +115,10 @@
                 </div>
                 <h1><g:message code="default.review.label"/></h1>
                 <g:render template="review" collection="${movieInstance?.reviews}" var="review" />
+                
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                  <g:render template="form_review" />
+                </sec:ifAllGranted>
             </div>
             </div>
         </div>

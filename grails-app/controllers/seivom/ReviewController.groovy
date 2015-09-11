@@ -1,6 +1,7 @@
 package seivom
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class ReviewController {
 
@@ -15,10 +16,12 @@ class ReviewController {
         [reviewInstanceList: Review.list(params), reviewInstanceTotal: Review.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [reviewInstance: new Review(params)]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def save() {
         def reviewInstance = new Review(params)
         if (!reviewInstance.save(flush: true)) {
@@ -41,6 +44,7 @@ class ReviewController {
         [reviewInstance: reviewInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
@@ -52,6 +56,7 @@ class ReviewController {
         [reviewInstance: reviewInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def update(Long id, Long version) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
@@ -81,6 +86,7 @@ class ReviewController {
         redirect(action: "show", id: reviewInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
