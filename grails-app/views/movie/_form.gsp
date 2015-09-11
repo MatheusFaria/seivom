@@ -44,7 +44,6 @@
 <div class="form-group fieldcontain ${hasErrors(bean: movieInstance, field: 'director', 'error')} required">
 	<label for="director">
 		<g:message code="movie.director.label" default="Director" />
-		<span class="required-indicator">*</span>
 	</label>
 
 	<select id="director" name="director.id" class="form-control">
@@ -57,7 +56,6 @@
 <div class="form-group fieldcontain ${hasErrors(bean: movieInstance, field: 'duration', 'error')} required">
 	<label class="control-label" for="duration">
 		<g:message code="movie.duration.label" default="Duration" />
-		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="duration" class="form-control" type="number" value="${movieInstance.duration}" required=""/>
 </div>
@@ -66,7 +64,6 @@
 <div class="form-group fieldcontain ${hasErrors(bean: movieInstance, field: 'studio', 'error')} required">
 	<label class="control-label" for="studio">
 		<g:message code="movie.studio.label" default="Studio" />
-		<span class="required-indicator">*</span>
 	</label>
 		
 	<select id="studio" name="studio.id" class="form-control">
@@ -80,14 +77,12 @@
 <div class="form-group fieldcontain ${hasErrors(bean: movieInstance, field: 'year', 'error')} required">
 	<label class="control-label" for="year">
 		<g:message code="movie.year.label" default="Year" />
-		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker class="form-control" name="year" precision="year"  value="${movieInstance?.year}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: movieInstance, field: 'poster', 'error')} required">
 <label class="control-label" for="poster"><g:message code="movie.poster.label" default="Poster" />
-		<span class="required-indicator">*</span></label>
 <input class="form-control" type="file" name="poster" id="poster" />
 </div>
 
