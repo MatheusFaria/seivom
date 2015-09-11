@@ -16,12 +16,12 @@ class ReviewController {
         [reviewInstanceList: Review.list(params), reviewInstanceTotal: Review.count()]
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         [reviewInstance: new Review(params)]
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save() {
         def reviewInstance = new Review(params)
         if (!reviewInstance.save(flush: true)) {
