@@ -9,7 +9,7 @@ class MovieController {
     def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-    private static final okcontents = ['image/png', 'image/jpeg']
+    private static final okcontents = ['image/png', 'image/jpeg', 'application/octet-stream']
 
     def index() {
         redirect(action: "list", params: params)
@@ -34,10 +34,11 @@ class MovieController {
             flash.message = message(code: 'default.poster.invalid')
             redirect(action: "create")
             return
+        } else if (poster.getContentType() != 'application/octet-stream') {
+            movieInstance.poster = poster.bytes
+            movieInstance.posterType = poster.contentType
         }
 
-        movieInstance.poster = poster.bytes
-        movieInstance.posterType = poster.contentType
         if (!movieInstance.save(flush: true)) {
             render(view: "create", model: [movieInstance: movieInstance])
             return
@@ -127,16 +128,22 @@ class MovieController {
 
     def get_poster() {
         def movie = Movie.get(params.id)
+        def poster
+
         if(!movie || !movie.poster || !movie.posterType) {
-            response.sendError(404)
-            return
+            def posterFile = new File("web-app/images/poster-placeholder.png")
+            poster = posterFile.bytes
+            response.contentType = "image/png"
+        } else {
+            response.contentType = movie.posterType
+            poster = movie.poster
         }
 
-        response.contentType = movie.posterType
-        response.contentLength = movie.poster.size()
+        response.contentLength = poster.size()
         OutputStream out = response.outputStream
-        out.write(movie.poster)
+        out.write(poster)
         out.close()
+        
     }
 
     def watched_movie() {

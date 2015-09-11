@@ -16,8 +16,12 @@ class Movie {
     static constraints = {
     	reviews nullable: true
         genres nullable: true
+        director nullable: true
+        studio nullable: true
         title blank: false
-        poster maxSize: 524288 /* 512K */
+        poster nullable: true
+        posterType nullable: true
+        poster maxSize: 131072 /* 128K */
     }
 
     static mapping = {
