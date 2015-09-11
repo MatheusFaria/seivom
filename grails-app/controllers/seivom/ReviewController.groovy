@@ -29,7 +29,7 @@ class ReviewController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
+        //flash.message = message(code: 'default.created.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
         redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
     }
 
@@ -82,7 +82,7 @@ class ReviewController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
+        //flash.message = message(code: 'default.updated.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
         redirect(action: "show", id: reviewInstance.id)
     }
 
@@ -101,7 +101,7 @@ class ReviewController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'review.label', default: 'Review'), id])
+            //flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'review.label', default: 'Review'), id])
             redirect(action: "show", id: id)
         }
     }

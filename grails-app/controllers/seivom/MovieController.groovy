@@ -44,7 +44,7 @@ class MovieController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'movie.label', default: 'Movie'), movieInstance.id])
+        //flash.message = message(code: 'default.created.message', args: [message(code: 'movie.label', default: 'Movie'), movieInstance.id])
         redirect(action: "show", id: movieInstance.id)
     }
 
@@ -101,7 +101,7 @@ class MovieController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'movie.label', default: 'Movie'), movieInstance.id])
+        //flash.message = message(code: 'default.updated.message', args: [message(code: 'movie.label', default: 'Movie'), movieInstance.id])
         redirect(action: "show", id: movieInstance.id)
     }
 
@@ -120,7 +120,7 @@ class MovieController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'movie.label', default: 'Movie'), id])
+            //flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'movie.label', default: 'Movie'), id])
             redirect(action: "show", id: id)
         }
     }
@@ -161,6 +161,10 @@ class MovieController {
                 def movie = Movie.get(params.id)
                 if(person.watchedmovies.contains(movie))
                         person.watchedmovies.remove(movie)
+                else if(person.reviewedmovies().contains(movie))
+                {
+                    flash.message = message(code: 'default.cant_remove_reviewd_movie')
+                }
         }
         redirect(action: "show", id: params.id)
     }
