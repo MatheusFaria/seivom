@@ -17,6 +17,12 @@
 
 	<body>
 		<div class="container">
+                        <g:if test="${flash.message}">
+                        <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                          <a class="close" data-dismiss="alert">×</a>
+                          ${flash.message}
+                        </div>
+                        </g:if>
     		<div class="row profile">
                 <div class="col-md-3">
                     <div class="profile-sidebar">
@@ -34,7 +40,7 @@
                           <g:hiddenField name="id" value="${movieInstance?.id}" />
                           <g:hiddenField name="version" value="${movieInstance?.version}" />
                           <fieldset class="profile-userbuttons">
-                               <g:if test="${params.person.watchedmovies.contains(movieInstance)}">
+                               <g:if test="${params.person.getWatchedMovies().contains(movieInstance)}">
                                     <g:link class="btn btn-danger btn-sm" action="remove_watched_movie" id="${movieInstance?.id}">
                                       <i class="glyphicon glyphicon-eye-close"></i>
                                       <g:message code="Didn't Watch" default="Didn't Watch" />

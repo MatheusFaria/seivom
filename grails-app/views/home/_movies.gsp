@@ -5,7 +5,7 @@
         <img src="${createLink(controller:'movie', action:'get_poster', id:movie.ident())}"  class="img-responsive">
       </div>
         <div class="col-md-9">
-          <g:link controller='movie' action='show' id='movie.id'>
+          <g:link controller='movie' action='show' id='${movie.id}'>
                   <strong>${movie.title}</strong>
           </g:link>
           

@@ -52,6 +52,12 @@ class Person {
                 reviews.movie
         }
 
+        def getWatchedMovies() {
+                def comb_list = watchedmovies + reviewedmovies()
+                comb_list = comb_list.toList().unique{ it.title }
+                return comb_list
+        }
+
     String toString() {
         return realname
     }

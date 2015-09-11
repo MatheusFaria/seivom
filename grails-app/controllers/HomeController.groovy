@@ -20,7 +20,7 @@ class HomeController {
 
                         if(params.id == "watched")
                         {
-                            movielist = [[title: "Watched Movies", value: person.watchedmovies]]
+                            movielist = [[title: "Watched Movies", value: person.getWatchedMovies()]]
                         }
                         else if(params.id == "watchlater")
                         {
