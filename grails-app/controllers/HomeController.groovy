@@ -8,7 +8,26 @@ class HomeController {
                 if (springSecurityService.isLoggedIn()) {
                         def person = springSecurityService.currentUser
                         params.person = person
-                        params.movies = person.watchedmovies
+                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies]]
+                        return [movielist: movielist]
+                }
+        }
+
+        def show_list = {
+                if (springSecurityService.isLoggedIn()) {
+                        def person = springSecurityService.currentUser
+                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies]]
+
+                        if(params.id == "watched")
+                        {
+                            movielist = [[title: "Watched Movies", value: person.watchedmovies]]
+                        }
+                        else if(params.id == "watchlater")
+                        {
+                            movielist = [[title: "Watch Later", value: person.watchlater]]
+                        }
+
+                        render template: 'displaymovielist', collection: movielist, var: 'movielist'
                 }
         }
 

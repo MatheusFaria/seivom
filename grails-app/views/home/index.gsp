@@ -3,16 +3,11 @@
 	<head>
       <meta name="layout" content="main"/>
     	<link rel="stylesheet" href="${resource(dir: 'css', file: 'profile.css')}" type="text/css">
-    <title>Seivom</title>
+    <title>seivom</title>
+        <g:javascript library="jquery" plugin="jquery" />
 	</head>
 	<body>
 <sec:ifLoggedIn>
-
-<!--
-User Profile Sidebar by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
 
 <div class="container">
     <div class="row profile">
@@ -43,20 +38,23 @@ Licensed under MIT
                                 <!-- SIDEBAR MENU -->
                                 <div class="profile-usermenu">
                                         <ul class="nav">
-                                                <li class="active">
-                                                        <a href="#">
-                                                        <i class="glyphicon glyphicon-check"></i>
-                                                        Reviewed Movies </a>
+                                                <li>
+                                                        <g:remoteLink action="show_list" id="reviewed" update="moviesLists">
+                                                                <i class="glyphicon glyphicon-check"></i>
+                                                                <g:message code="default.reviewedmovies.label" />
+                                                        </g:remoteLink>
                                                 </li>
                                                 <li>
-                                                        <a href="#">
-                                                        <i class="glyphicon glyphicon-eye-open"></i>
-                                                        Movies Watched</a>
+                                                        <g:remoteLink action="show_list" id="watched" update="moviesLists">
+                                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                                                <g:message code="default.watchedmovies.label" />
+                                                        </g:remoteLink>
                                                 </li>
                                                 <li>
-                                                        <a href="#">
-                                                        <i class="glyphicon glyphicon-dashboard"></i>
-                                                        Watch Later </a>
+                                                        <g:remoteLink action="show_list" id="watchlater" update="moviesLists">
+                                                                <i class="glyphicon glyphicon-dashboard"></i>
+                                                                <g:message code="default.watchlater.label" />
+                                                        </g:remoteLink>
                                                 </li>
                                         </ul>
                                 </div>
@@ -96,17 +94,11 @@ Licensed under MIT
                         </div>
                 </div>
                 <div class="col-md-9">
-            <div class="profile-content">
-                <g:render template="movies" collection="${params.movies}" var="movie" />
+            <div class="profile-content" id="moviesLists">
+                <g:render template="displaymovielist" collection="${movielist}" var="movielist" />
             </div>
                 </div>
         </div>
-<!-- </div>
-<center>
-<strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
-</center>
-<br>
-<br> -->
 </sec:ifLoggedIn>
 	</body>
 </html>
