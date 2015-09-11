@@ -8,16 +8,20 @@
                 <a href="${createLink(controller:'movie', action:'show', id:movie.id)}"/>
                         <strong>${movie.title}</strong>
                 </a>
+
+                <div class="user-rating"> 
+                  <g:each in="${(1..5).toList()}" var="i">
+                    <g:if test="${ i <= (movie.reviews.rate.sum() / movie.reviews.size()) }">
+                      <span class="glyphicon glyphicon-star"></span>
+                    </g:if>
+                    <g:else>
+                      <span class="glyphicon glyphicon-star-empty"></span>
+                    </g:else>
+                </g:each>
+              </div>
+
+                <br>
                 <p>${movie.description}</p>
-                        <ul class="list-inline list-unstyled">
-                                <li>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                </li>
-                        </ul>
           </div>
         </div>
       </div>
