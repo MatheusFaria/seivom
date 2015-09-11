@@ -59,37 +59,70 @@
                                         </ul>
                                 </div>
 
-                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                <sec:ifLoggedIn>
                                 <div class="profile-usertitle">
                                         <div class="profile-usertitle-name">
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
                                                 Manage
+                                </sec:ifAllGranted>
+                                <sec:ifAllGranted roles="ROLE_USER">
+                                                Lists
+                                </sec:ifAllGranted>
                                         </div>
                                 </div>
                                 <div class="profile-usermenu">
                                         <ul class="nav">
                                          <li>
                                                 <a href="${createLink(controller:'movie', action:'list')}"/>
-                                                        <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="movie.list.label" default="Manage Movies" /></a>
+                                                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                                <i class="glyphicon glyphicon-cog"></i>
+                                                                <g:message code="movie.list.label" default="Manage Movies" /></a>
+                                                        </sec:ifAllGranted>
+                                                        <sec:ifAllGranted roles="ROLE_USER">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                                Movies
+                                                        </sec:ifAllGranted>
+                                                </a>
                                         </li>
                                          <li>
                                                 <a href="${createLink(controller:'director', action:'list')}"/>
-                                                        <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="director.list.label" default="Manage Directors" /></a>
+                                                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                                <i class="glyphicon glyphicon-cog"></i>
+                                                                <g:message code="director.list.label" default="Manage Directors" /></a>
+                                                        </sec:ifAllGranted>
+                                                        <sec:ifAllGranted roles="ROLE_USER">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                                Directors
+                                                        </sec:ifAllGranted>
+                                                </a>
                                         </li>
                                          <li>
                                                 <a href="${createLink(controller:'studio', action:'list')}"/>
-                                                        <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="studio.list.label" default="Manage Studios" /></a>
+                                                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                                <i class="glyphicon glyphicon-cog"></i>
+                                                                <g:message code="studio.list.label" default="Manage Studios" /></a>
+                                                        </sec:ifAllGranted>
+                                                        <sec:ifAllGranted roles="ROLE_USER">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                                Studios
+                                                        </sec:ifAllGranted>
+                                                </a>
                                         </li>
                                          <li>
                                                 <a href="${createLink(controller:'actor', action:'list')}"/>
-                                                        <i class="glyphicon glyphicon-cog"></i>
-                                                <g:message code="actor.list.label" default="Manage Actors" /></a>
+                                                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                                <i class="glyphicon glyphicon-cog"></i>
+                                                                <g:message code="actor.list.label" default="Manage Actors" /></a>
+                                                        </sec:ifAllGranted>
+                                                        <sec:ifAllGranted roles="ROLE_USER">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                                Actors
+                                                        </sec:ifAllGranted>
+                                                </a>
                                         </li>
                                         </ul>
                                 </div>
-                                </sec:ifAllGranted>
+                                </sec:ifLoggedIn>
                                 <!-- END MENU -->
                         </div>
                 </div>
