@@ -85,11 +85,8 @@
 
             <div class="col-md-9">
 				<div class="profile-content">
-                	<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
-					</g:if>
 
-					<g:render template="movies" collection="${studioInstance.movies}" var="movie" />
+					<g:render template="/home/movies" collection="${studioInstance.movies}" var="movie" />
             	</div>
             </div>
         </div>

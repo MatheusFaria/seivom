@@ -11,20 +11,24 @@
 	<body>
 		
 		<div class="container">
+                        <g:if test="${flash.message}">
+                        <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                          <a class="close" data-dismiss="alert">×</a>
+                          ${flash.message}
+                        </div>
+                        </g:if>
+                        <g:hasErrors bean="${directorInstance}">
+                          <g:eachError bean="${directorInstance}" var="error">
+                                <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                                  <a class="close" data-dismiss="alert">×</a>
+                                  <g:message error="${error}"/>
+                                </div>
+                          </g:eachError>
+                        </g:hasErrors>
 			<div class="col-md-6 col-md-offset-3">
 				<div class="form-area">
 
 					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-					<g:if test="${flash.message}">
-					<div class="message" role="status">${flash.message}</div>
-					</g:if>
-					<g:hasErrors bean="${directorInstance}">
-					<ul class="errors" role="alert">
-						<g:eachError bean="${directorInstance}" var="error">
-						<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-						</g:eachError>
-					</ul>
-					</g:hasErrors>
 
 					<g:form action="save" >
 						<fieldset class="form">

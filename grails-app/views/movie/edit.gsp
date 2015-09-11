@@ -14,6 +14,7 @@
                           <a class="close" data-dismiss="alert">×</a>
                           ${flash.message}
                         </div>
+                        </g:if>
 			<div class="col-md-6 col-md-offset-3">
 				<div class="form-area">
 					<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
