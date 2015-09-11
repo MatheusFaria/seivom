@@ -8,7 +8,7 @@ class HomeController {
                 if (springSecurityService.isLoggedIn()) {
                         def person = springSecurityService.currentUser
                         params.person = person
-                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies]]
+                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies()]]
                         return [movielist: movielist]
                 }
         }
@@ -16,7 +16,7 @@ class HomeController {
         def show_list = {
                 if (springSecurityService.isLoggedIn()) {
                         def person = springSecurityService.currentUser
-                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies]]
+                        def movielist = [[title: "Reviewed Movies", value: person.reviewedmovies()]]
 
                         if(params.id == "watched")
                         {

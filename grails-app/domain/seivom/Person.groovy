@@ -48,6 +48,10 @@ class Person {
 		password = springSecurityService.encodePassword(password)
 	}
 
+        def reviewedmovies() {
+                reviews.movie
+        }
+
     String toString() {
         return realname
     }

@@ -5,9 +5,9 @@
             <img src="${createLink(controller:'movie', action:'get_poster', id:movie.ident())}"  class="img-responsive">
           </div>
           <div class="col-md-9">
-                <a href="${createLink(controller:'movie', action:'show', id:movie.id)}"/>
+                <g:link controller='movie' action='show' id='movie.id'>
                         <strong>${movie.title}</strong>
-                </a>
+                </g:link>
 
                 <div class="user-rating"> 
                   <g:each in="${(1..5).toList()}" var="i">
