@@ -1,5 +1,7 @@
 import seivom.Person
 import seivom.Movie
+import seivom.Authority
+import seivom.PersonAuthority
 
 class HomeController {
         def springSecurityService
@@ -45,9 +47,12 @@ class HomeController {
                 email: params.email,
                 enabled: true)
 
+            def userRole = Authority.get(2)
             if(person.validate()) {
                 person.save()
                 params.successful_sign_up = true
+
+                PersonAuthority.create person, userRole, true
                 redirect controller: 'login', action: 'auth', params: params
             }
             else {
