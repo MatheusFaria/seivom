@@ -63,4 +63,11 @@ class Person {
     String toString() {
         return realname
     }
+
+        def getReviewID(movie) {
+                reviews.toList().each{
+                        if(it.movie.id == movie.id)
+                                return it
+                }
+        }
 }

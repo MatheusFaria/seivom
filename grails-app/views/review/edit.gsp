@@ -5,39 +5,45 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'review.label', default: 'Review')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'forms.css')}" type="text/css">
 	</head>
+
 	<body>
-		<a href="#edit-review" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="edit-review" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${reviewInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${reviewInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form method="post" >
-				<g:hiddenField name="id" value="${reviewInstance?.id}" />
-				<g:hiddenField name="version" value="${reviewInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+		<div class="container">
+                        <g:if test="${flash.message}">
+                        <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                          <a class="close" data-dismiss="alert">×</a>
+                          ${flash.message}
+                        </div>
+                        </g:if>
+                        <g:hasErrors bean="${reviewInstance}">
+                          <g:eachError bean="${reviewInstance}" var="error">
+                                <div class="alert alert-danger col-md-offset-1" style="max-width: 900px;">
+                                  <a class="close" data-dismiss="alert">×</a>
+                                  <g:message error="${error}"/>
+                                </div>
+                          </g:eachError>
+                        </g:hasErrors>
+			<div class="col-md-6 col-md-offset-3">
+				<div class="form-area">
+
+					<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+
+					<g:form method="post" >
+						<g:hiddenField name="id" value="${reviewInstance?.id}" />
+						<g:hiddenField name="version" value="${reviewInstance?.version}" />
+						<fieldset>
+							<g:render template="form"/>
+						</fieldset>
+
+						<br>
+
+						<fieldset>
+							<g:actionSubmit class="btn btn-success pull-right" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+						</fieldset>
+					</g:form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

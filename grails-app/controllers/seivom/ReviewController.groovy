@@ -7,25 +7,12 @@ class ReviewController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
-
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [reviewInstanceList: Review.list(params), reviewInstanceTotal: Review.count()]
-    }
-
-    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-    def create() {
-        [reviewInstance: new Review(params)]
-    }
-
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save() {
         def reviewInstance = new Review(params)
         if (!reviewInstance.save(flush: true)) {
-            render(view: "create", model: [reviewInstance: reviewInstance])
+            message.flash = "You can't comment here"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
             return
         }
 
@@ -33,35 +20,24 @@ class ReviewController {
         redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
     }
 
-    def show(Long id) {
-        def reviewInstance = Review.get(id)
-        if (!reviewInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [reviewInstance: reviewInstance]
-    }
-
-    @Secured(['ROLE_ADMIN'])
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Long id) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "list")
+            message.flash = "You can't comment here"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
             return
         }
 
         [reviewInstance: reviewInstance]
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def update(Long id, Long version) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "list")
+            message.flash = "You can't comment here"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
             return
         }
 
@@ -82,27 +58,25 @@ class ReviewController {
             return
         }
 
-        //flash.message = message(code: 'default.updated.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
-        redirect(action: "show", id: reviewInstance.id)
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
     }
 
-    @Secured(['ROLE_ADMIN'])
-    def delete(Long id) {
+    def remove(Long id) {
         def reviewInstance = Review.get(id)
         if (!reviewInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "list")
+            message.flash = "You can't delete thie comment"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
             return
         }
 
         try {
             reviewInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "list")
+            flash.message = "Your comment was removed"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
         }
         catch (DataIntegrityViolationException e) {
-            //flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'review.label', default: 'Review'), id])
-            redirect(action: "show", id: id)
+            message.flash = "You can't delete the comment"
+            redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
         }
     }
 }

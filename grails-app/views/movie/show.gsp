@@ -85,18 +85,18 @@
 
 
                         <div class="profile-usermenu">
-							<ul class="nav" role="navigation">
-								<li>
-									<a href="${createLink(controller:'movie', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="movie.list.label" default="List Movies" /></a>
-								</li>
-                        <sec:ifAllGranted roles="ROLE_ADMIN">
-								<li>
-									<a href="${createLink(controller:'movie', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="movie.create.label" default="New Movie" /></a>
-								</li>
-                        </sec:ifAllGranted>
+                                                <ul class="nav" role="navigation">
+                                                        <li>
+                                                                <a href="${createLink(controller:'movie', action:'list')}"/><i class="glyphicon glyphicon-list"></i><g:message code="movie.list.label" default="List Movies" /></a>
+                                                        </li>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                        <li>
+                                                                <a href="${createLink(controller:'movie', action:'create')}"/><i class="glyphicon glyphicon-plus"></i><g:message code="movie.create.label" default="New Movie" /></a>
+                                                        </li>
+                </sec:ifAllGranted>
 
-							</ul>
-						</div>
+                                                </ul>
+                                        </div>
 
                         <!-- END MENU -->
                     </div>
@@ -133,10 +133,23 @@
 
                 <h1><g:message code="default.review.label"/></h1>
                 <g:render template="review" collection="${movieInstance?.reviews}" var="review" />
-                
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                  <g:render template="form_review" />
-                </sec:ifAllGranted>
+                <hr>
+                <sec:ifLoggedIn>
+                  <g:if test="${params.person.reviews.movie.contains(movieInstance)}">
+                        <fieldset class="buttons">
+                         <g:link class="btn btn-danger pull-left" controller="review" action="remove" id="${params.person.getReviewID(movieInstance).id[0]}">
+                                 <g:message code= 'default.button.delete_review.label' default= 'Delete Review' />
+                         </g:link>
+
+                         <g:link class="btn btn-success pull-right" controller="review" action="edit" id="${params.person.getReviewID(movieInstance).id[0]}">
+                                 <g:message code= 'default.button.update_review.label' default= 'Update Review' />
+                         </g:link>
+                        </fieldset>
+                  </g:if>
+                  <g:else>
+                    <g:render template="form_review" />
+                  </g:else>
+                </sec:ifLoggedIn>
             </div>
             </div>
         </div>
