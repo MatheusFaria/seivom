@@ -26,7 +26,7 @@
 <g:form action="save" controller="review">
 	<fieldset class="form">
 		<div class="rating-bar pull-right"> 
-  			<span id="test" class="glyphicon glyphicon-star" value="1"></span>
+  			<span class="glyphicon glyphicon-star" value="1"></span>
   			<span class="glyphicon glyphicon-star" value="2"></span>
   			<span class="glyphicon glyphicon-star" value="3"></span>
   			<span class="glyphicon glyphicon-star-empty" value="4"></span>

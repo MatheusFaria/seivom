@@ -30,7 +30,7 @@ class ReviewController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'review.label', default: 'Review'), reviewInstance.id])
-        redirect(action: "show", id: reviewInstance.id)
+        redirect(controller: "movie", action: "show", id: reviewInstance.movie.id)
     }
 
     def show(Long id) {
