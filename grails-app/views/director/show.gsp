@@ -86,7 +86,7 @@
             <div class="col-md-9">
 				<div class="profile-content">
 
-					<g:render template="/home/movies" collection="${directorInstance.movies}" var="movie" />
+					<g:render template="/home/movies" collection="${directorInstance?.movies}" var="movie" />
             	</div>
             </div>
         </div>
