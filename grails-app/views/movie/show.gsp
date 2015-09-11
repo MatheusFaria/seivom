@@ -107,10 +107,11 @@
                 <h1>${movieInstance?.title}</h1>
 
                 <p>
-                  <a href="${createLink(controller:'director', action:'show', id:movieInstance?.director.id)}"/>
-                      ${movieInstance?.director.name}</a>, ${movieInstance?.year.getAt(Calendar.YEAR)}
+                  <g:if test="${movieInstance?.director}">
+                  <a href="${createLink(controller:'director', action:'show', id:movieInstance?.director?.id)}"/>
+                      ${movieInstance?.director?.name}</a>, </g:if>${movieInstance?.year.getAt(Calendar.YEAR)}
 
-                  (<a href="${createLink(controller:'studio', action:'show', id:movieInstance?.studio.id)}"/>${movieInstance?.studio.name}</a>)
+                  <g:if test="${movieInstance?.studio}">(<a href="${createLink(controller:'studio', action:'show', id:movieInstance?.studio?.id)}"/>${movieInstance?.studio?.name}</a>)</g:if>
                 </p>
 
                 <p> <g:message code="default.duration_label"/>: ${movieInstance?.duration} <g:message code="default.time.minutes" default="minutes" /></p>

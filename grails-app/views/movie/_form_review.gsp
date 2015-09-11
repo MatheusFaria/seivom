@@ -28,7 +28,7 @@
 		<div class="rating-bar pull-right"> 
   			<span class="glyphicon glyphicon-star" value="1"></span>
   			<span class="glyphicon glyphicon-star" value="2"></span>
-  			<span class="glyphicon glyphicon-star" value="3"></span>
+  			<span class="glyphicon glyphicon-star selected" value="3"></span>
   			<span class="glyphicon glyphicon-star-empty" value="4"></span>
   			<span class="glyphicon glyphicon-star-empty" value="5"></span>
   			<input type="hidden" id="rate-field" name="rate" value="3">

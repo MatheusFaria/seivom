@@ -56,6 +56,16 @@ class BootStrap {
     }
 
     private void createMovies() {
+        new Movie(title: "The Godfather", description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+            duration: 175, year: new Date(), poster: new File("web-app/images/godfather.jpg").bytes, posterType: "image/jpg").save()
+        new Movie(title: "Pulp Fiction", description: "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+            duration: 154, year: new Date(), poster: new File("web-app/images/pulp-fiction.jpg").bytes, posterType: "image/jpg").save()
+        new Movie(title: "Fight Club", description: "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more...",
+            duration: 139, year: new Date(), poster: new File("web-app/images/fight-club.jpg").bytes, posterType: "image/jpg").save()
+        new Movie(title: "Forrest Gump", description: "Forrest Gump, while not intelligent, has accidentally been present at many historic moments, but his true love, Jenny Curran, eludes him.",
+            duration: 142, year: new Date(), poster: new File("web-app/images/forest-gump.jpg").bytes, posterType: "image/jpg").save()
+        new Movie(title: "The Matrix", description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", 
+            duration: 136, year: new Date(), poster: new File("web-app/images/matrix.jpg").bytes, posterType: "image/jpg").save()
 
     }
 
