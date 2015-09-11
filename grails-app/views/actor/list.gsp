@@ -22,10 +22,13 @@
 
 				<div class="row">
 					<div id="list-actor" class="scaffold-list" role="main">
-						<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 						<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
+                                                <div class="alert alert-danger" style="max-width: 900px;">
+                                                  <a class="close" data-dismiss="alert">×</a>
+                                                  ${flash.message}
+                                                </div>
 						</g:if>
+						<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 						<table class="col-md-12">
 							<thead>
 								<tr>

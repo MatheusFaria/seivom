@@ -7,6 +7,7 @@ class Director {
 	String name
 
     static constraints = {
+        name blank: false
     	movies nullable: true
     }
 

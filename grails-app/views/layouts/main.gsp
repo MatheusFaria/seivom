@@ -26,7 +26,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="${createLink(uri: '/')}">Seivom</a>
+          <a class="navbar-brand" href="${createLink(uri: '/')}">
+                <i class="glyphicon glyphicon-film"></i> seivom
+          </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">

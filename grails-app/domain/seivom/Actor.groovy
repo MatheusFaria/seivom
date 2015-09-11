@@ -6,6 +6,7 @@ class Actor {
     String name
 
     static constraints = {
+        name blank: false
     	movies nullable: true
     }
 

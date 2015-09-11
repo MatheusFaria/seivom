@@ -8,6 +8,7 @@ class Studio {
 	String country
 
     static constraints = {
+        name blank: false
     	movies nullable: true
     }
 
