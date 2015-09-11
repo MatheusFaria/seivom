@@ -49,7 +49,9 @@ class Person {
 	}
 
         def reviewedmovies() {
-                reviews.movie
+                def comb_list = reviews.movie
+                comb_list = comb_list.toList().unique{ it.title }
+                return comb_list
         }
 
         def getWatchedMovies() {
